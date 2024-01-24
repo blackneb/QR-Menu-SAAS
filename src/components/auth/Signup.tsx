@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Card } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 interface CreateAccountProps {
     setShowCreateAccount: React.Dispatch<React.SetStateAction<boolean>>;
   }
-const CreateAccount: React.FC<CreateAccountProps> = ({setShowCreateAccount}:any) => {
+const CreateAccount: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const onFinish = async (values: any) => {
+    console.log(values)
     try {
       setLoading(true);
       // Add your account creation logic here, e.g., make an API request
@@ -147,7 +150,7 @@ const CreateAccount: React.FC<CreateAccountProps> = ({setShowCreateAccount}:any)
             <Button
               type="default"
               style={{ width: '100%', marginBottom: '8px', borderColor: '#800020', color: '#800020' }}
-              onClick={()=>{ setShowCreateAccount(false) }}
+              onClick={()=>{ navigate("/login") }}
             >
               Cancel
             </Button>

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Card } from 'antd'; // Import UserOutlined and LockOutlined
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 interface LogInProps {
     setShowCreateAccount: React.Dispatch<React.SetStateAction<boolean>>;
   }
 
-const Login: React.FC<LogInProps> = ({setShowCreateAccount}:any) => {
+const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const onFinish = async (values: any) => {
+    console.log(values)
     try {
       setLoading(true);
       // Add your authentication logic here, e.g., make an API request
@@ -63,7 +65,7 @@ const Login: React.FC<LogInProps> = ({setShowCreateAccount}:any) => {
             <div className="flex flex-row w-full justify-between items-center">
               <div className="mr-2">Don't have an account? </div>
               <div>
-                <Button type="text" style={{ color: '#800020', fontWeight: 'bold' }} onClick={() => setShowCreateAccount(true)}>
+                <Button type="text" style={{ color: '#800020', fontWeight: 'bold' }} onClick={()=>{ navigate("/createaccount") }}>
                   Create Account
                 </Button>
               </div>

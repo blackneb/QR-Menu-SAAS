@@ -1,20 +1,12 @@
-import React, { useState } from "react";
-import Login from "./components/auth/Login";
-import CreateAccount from "./components/auth/Signup";
 import Navbar from "./components/navbar/Navbar";
+import Routing from "./components/routing/Routing";
 
 function App() {
-  const [showCreateAccount, setShowCreateAccount] = useState(true);
-
-  const toggleComponent = () => {
-    setShowCreateAccount(!showCreateAccount);
-  };
-
   return (
     <>
       <div className="flex flex-row">
         <Navbar />
-        {showCreateAccount ? <CreateAccount setShowCreateAccount={setShowCreateAccount} /> : <Login setShowCreateAccount={setShowCreateAccount} />}
+        <Routing/>
       </div>
     </>
   );
