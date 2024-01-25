@@ -13,6 +13,7 @@ import {
 } from '@ant-design/icons';
 import Navbar from '../navbar/Navbar';
 import QRCodeDisplay from '../pages/QRCodeManagement';
+import MenuManagement from '../pages/MenuManagement';
 
 const { Header, Sider, Content } = Layout;
 
@@ -33,7 +34,7 @@ const Sidebar: React.FC = () => {
       case '1':
         return <QRCodeDisplay data="Your QR Code Data Here" />;
       case '2':
-        return <div>Content for Menu Management</div>;
+        return <MenuManagement />;
       case '3':
         return <div>Content for Profile Management</div>;
       case '4':
@@ -59,48 +60,50 @@ const Sidebar: React.FC = () => {
           trigger={null}
           collapsible
           collapsed={collapsed}
-          style={{ background: 'white' }} // Set the background color of the Sider to white
+          style={{ background: 'white' }}
         >
           <div className="trigger-icon" onClick={toggleCollapsed}>
             {collapsed ? (
-              <MenuUnfoldOutlined className="text-2xl p-4" style={{color:"#800020"}} />
+              <MenuUnfoldOutlined className="text-2xl p-4" style={{ color: '#800020' }} />
             ) : (
-              <MenuFoldOutlined className="text-2xl p-4" style={{color:"#800020"}} />
+              <MenuFoldOutlined className="text-2xl p-4" style={{ color: '#800020' }} />
             )}
           </div>
           <Menu
-            theme="light" // Set the theme to light
+            theme="light"
             mode="inline"
             defaultSelectedKeys={['1']}
             selectedKeys={[selectedMenuItem]}
             onClick={({ key }) => handleMenuClick(key)}
-            style={{ background: 'white' }} // Set the background color of the Menu to white
+            style={{ background: 'white' }}
           >
-            <Menu.Item key="1" icon={<QrcodeOutlined />} style={{color:"#800020"}}>
+            <Menu.Item key="1" icon={<QrcodeOutlined />} style={{ color: '#800020' }}>
               QR Code Management
             </Menu.Item>
-            <Menu.Item key="2" icon={<BarsOutlined />} style={{color:"#800020"}}>
+            <Menu.Item key="2" icon={<BarsOutlined />} style={{ color: '#800020' }}>
               Menu Management
             </Menu.Item>
-            <Menu.Item key="3" icon={<UserOutlined />} style={{color:"#800020"}}>
+            <Menu.Item key="3" icon={<UserOutlined />} style={{ color: '#800020' }}>
               Profile Management
             </Menu.Item>
-            <Menu.Item key="4" icon={<HistoryOutlined />} style={{color:"#800020"}}>
+            <Menu.Item key="4" icon={<HistoryOutlined />} style={{ color: '#800020' }}>
               History
             </Menu.Item>
-            <Menu.Item key="5" icon={<LineChartOutlined />} style={{color:"#800020"}}>
+            <Menu.Item key="5" icon={<LineChartOutlined />} style={{ color: '#800020' }}>
               Analytics
             </Menu.Item>
-            <Menu.Item key="6" icon={<PieChartOutlined />} style={{color:"#800020"}}>
+            <Menu.Item key="6" icon={<PieChartOutlined />} style={{ color: '#800020' }}>
               Restaurants
             </Menu.Item>
-            <Menu.Item key="7" icon={<QuestionCircleOutlined />} style={{color:"#800020"}}>
+            <Menu.Item key="7" icon={<QuestionCircleOutlined />} style={{ color: '#800020' }}>
               Help and Support
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Content className="p-4 bg-white">{renderContent()}</Content>
+          <Content className="p-4 bg-white" style={{ height: 'calc(100vh - 64px)', overflowY: 'auto' }}>
+            {renderContent()}
+          </Content>
         </Layout>
       </Layout>
     </Layout>
