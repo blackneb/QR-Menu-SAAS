@@ -12,6 +12,7 @@ import {
   QuestionCircleOutlined,
 } from '@ant-design/icons';
 import Navbar from '../navbar/Navbar';
+import QRCodeDisplay from '../pages/QRCodeManagement';
 
 const { Header, Sider, Content } = Layout;
 
@@ -30,7 +31,7 @@ const Sidebar: React.FC = () => {
   const renderContent = () => {
     switch (selectedMenuItem) {
       case '1':
-        return <div>Content for QR Code Management</div>;
+        return <QRCodeDisplay data="Your QR Code Data Here" />;
       case '2':
         return <div>Content for Menu Management</div>;
       case '3':
