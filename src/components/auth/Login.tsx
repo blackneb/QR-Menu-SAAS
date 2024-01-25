@@ -3,10 +3,6 @@ import { Form, Input, Button, Card } from 'antd'; // Import UserOutlined and Loc
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-interface LogInProps {
-    setShowCreateAccount: React.Dispatch<React.SetStateAction<boolean>>;
-  }
-
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

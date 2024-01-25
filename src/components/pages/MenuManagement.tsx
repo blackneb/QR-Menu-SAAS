@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Card, Row, Col, Button, Input, Collapse, Modal, Form, InputNumber } from 'antd';
 import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import AddMenuModal from '../modals/AddMenuModal';
 
 const { Panel } = Collapse;
 
@@ -151,22 +152,7 @@ const MenuManagement: React.FC = () => {
       </Button>
 
       <Modal title="Add Menu" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} okButtonProps={{ style: okButtonStyle }}>
-        {/* Add your form content here */}
-        <Form
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          onFinish={(values) => {
-            console.log('Received values:', values);
-            // Handle the form submission logic here
-          }}
-        >
-          <Form.Item label="Menu Name" name="menuName" rules={[{ required: true, message: 'Please enter the menu name' }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item label="Price" name="price" rules={[{ required: true, message: 'Please enter the price' }]}>
-            <InputNumber min={0} step={0.01} />
-          </Form.Item>
-        </Form>
+        <AddMenuModal/>
       </Modal>
 
       <div className="mt-8">
