@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Tabs } from 'antd';
 import MenuList from '../menu management/MenuLists';
 import AddMenuModal from '../menu management/AddMenuModal';
+import AddCategories from '../menu management/AddCatagories';
 
 const { TabPane } = Tabs;
 
@@ -25,6 +26,11 @@ const MenuManagement: React.FC = () => {
         <TabPane tab={<div style={tabStyle}>Add Menu</div>} key="2">
           <div style={{ height: '80vh', overflowY: 'auto' }}>
             <AddMenuModal />
+          </div>
+        </TabPane>
+        <TabPane tab={<div style={tabStyle}>Add Categories</div>} key="3">
+          <div style={{ height: '80vh', overflowY: 'auto' }}>
+            <AddCategories />
           </div>
         </TabPane>
       </Tabs>

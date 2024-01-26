@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react';
-import { Form, InputNumber, Select, Upload, Button } from 'antd';
+import { Form, InputNumber,Input, Select, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
@@ -39,25 +39,28 @@ const AddMenuModal: React.FC = () => {
             labelAlign="left"
             labelWrap
           >
-            <Form.Item label="Menu Name" name="menuName" rules={[{ required: true, message: 'Please enter the menu name' }]}>
-          <Select>
-            <Option value="dish1">Dish 1</Option>
-            <Option value="dish2">Dish 2</Option>
-          </Select>
-        </Form.Item>
-        <Form.Item label="Price" name="price" rules={[{ required: true, message: 'Please enter the price' }]}>
-          <InputNumber min={0} step={0.01} />
-        </Form.Item>
-        <Form.Item label="Image" name="image" valuePropName="fileList" getValueFromEvent={normFile} rules={[{ required: true, message: 'Please enter the price' }]}>
-          <Upload name="logo" action="/upload.do" listType="picture">
-            <Button icon={<UploadOutlined />}>Click to upload</Button>
-          </Upload>
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }} >
-          <Button type="primary" htmlType="submit" style={{background: '#800020', borderColor: '#800020' }}>
-            Submit
-          </Button>
-        </Form.Item>
+            <Form.Item label="Category" name="category" rules={[{ required: true, message: 'Please enter the Category name' }]}>
+              <Select>
+                <Option value="dish1">Dish 1</Option>
+                <Option value="dish2">Dish 2</Option>
+              </Select>
+            </Form.Item>
+            <Form.Item label="Meny Name" name="menuName" rules={[{ required: true, message: 'Please enter the Menu name' }]}>
+              <Input min={0} step={0.01} />
+            </Form.Item>
+            <Form.Item label="Price" name="price" rules={[{ required: true, message: 'Please enter the price' }]}>
+              <InputNumber min={0} step={0.01} />
+            </Form.Item>
+            <Form.Item label="Image" name="image" valuePropName="fileList" getValueFromEvent={normFile} rules={[{ required: true, message: 'Please enter the price' }]}>
+              <Upload name="logo" action="/upload.do" listType="picture">
+                <Button icon={<UploadOutlined />}>Click to upload</Button>
+              </Upload>
+            </Form.Item>
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }} >
+              <Button type="primary" htmlType="submit" style={{background: '#800020', borderColor: '#800020' }}>
+                Submit
+              </Button>
+            </Form.Item>
           </Form>
         </div>
       </div>
