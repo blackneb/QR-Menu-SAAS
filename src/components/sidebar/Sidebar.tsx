@@ -16,14 +16,14 @@ import QRCodeDisplay from '../pages/QRCodeManagement';
 import MenuManagement from '../pages/MenuManagement';
 import Routing from '../routing/Routing';
 import ProfileManagement from '../pages/ProfileManagement';
+import { useSelector } from 'react-redux';
 
 const { Header, Sider, Content } = Layout;
 
 const Sidebar: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('1'); // Default selected menu item
-  const [isLoggedIn, setLoggedIn] = useState(false); // Added state for login status
-
+  const userLoggedIn = useSelector((state:any) => state.userInformation.userLogged)
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
@@ -58,12 +58,12 @@ const Sidebar: React.FC = () => {
       <Header className="site-layout-background p-0 bg-white shadow-md">
         <Navbar />
       </Header>
-      {isLoggedIn === false &&(
+      {userLoggedIn === undefined &&(
       <>
         <Routing/>
       </>
       )}
-      {isLoggedIn && (
+      {userLoggedIn && (
         <Layout>
           <Sider
             trigger={null}

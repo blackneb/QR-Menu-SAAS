@@ -4,6 +4,7 @@ import { MenuOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { Avatar, Space } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 
 
 interface NavbarProps {
@@ -12,7 +13,8 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const userLoggedIn = useSelector((state:any) => state.userInformation.userLogged)
+
   const navigate = useNavigate()
   const showDrawer = () => {
     setDrawerOpen(true);
@@ -31,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {
-            isLoggedIn?(
+            userLoggedIn?(
             <>
               <Space wrap size={16}>
                 <Avatar shape="circle" style={{color:"#800020"}} size={40} icon={<UserOutlined />} />
@@ -74,7 +76,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           </Drawer>
         </div>
         <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-          {isLoggedIn?(
+          {userLoggedIn?(
           <>
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-white md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
               <li>
