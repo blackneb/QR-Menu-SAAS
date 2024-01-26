@@ -22,7 +22,7 @@ const { Header, Sider, Content } = Layout;
 const Sidebar: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('1'); // Default selected menu item
-  const [isLoggedIn, setLoggedIn] = useState(true); // Added state for login status
+  const [isLoggedIn, setLoggedIn] = useState(false); // Added state for login status
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
