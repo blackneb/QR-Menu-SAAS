@@ -22,7 +22,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen w-full">
+    <div className="flex items-center justify-center h-screen w-full" style={{height:"80vh"}}>
       <Card title="Login" style={{ maxWidth: '400px', width: '100%' }}>
         <Form name="login-form" initialValues={{ remember: true }} layout="vertical" onFinish={onFinish}>
           <Form.Item

@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-const Landing = () => {
+
+const Landing: React.FC = () => {
+
   return (
-    <div>
-      <h3>Landing Page</h3>
+    <div className="app-container">
+     
     </div>
-  )
-}
+  );
+};
 
-export default Landing
+
+export default Landing;

@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Card } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
-interface CreateAccountProps {
-    setShowCreateAccount: React.Dispatch<React.SetStateAction<boolean>>;
-  }
 const CreateAccount: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -52,7 +49,7 @@ const CreateAccount: React.FC = () => {
   };
 
   return (
-    <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center', height: '100vh', marginTop:'20px' }}>
+    <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center', height: '80vh', marginTop:'20px' }}>
       <Card title="Create Account" style={{ minWidth: '320px' }}>
         <Form name="create-account-form" onFinish={onFinish}>
           <Form.Item
