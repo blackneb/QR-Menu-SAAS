@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
-import { Link, useNavigate } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
+import { Avatar, Space } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
+
 
 interface NavbarProps {
   // Add any required props here
@@ -9,6 +12,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(true);
   const navigate = useNavigate()
   const showDrawer = () => {
     setDrawerOpen(true);
@@ -26,12 +30,24 @@ const Navbar: React.FC<NavbarProps> = () => {
           <span className="hidden md:block self-center text-2xl font-semibold whitespace-nowrap text-black">Gazettaa</span>
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <Button type="primary" className="rounded-lg" style={{ backgroundColor: '#800020', borderColor: '#800020', marginRight: 4 }} onClick={()=>{ navigate("/createaccount") }}>
-            Get started
-          </Button>
-          <Button type="text" className="text-black" style={{ color: '#800020' }} onClick={()=>{ navigate("/login") }}>
-            Log in
-          </Button>
+          {
+            isLoggedIn?(
+            <>
+              <Space wrap size={16}>
+                <Avatar shape="circle" style={{color:"#800020"}} size={40} icon={<UserOutlined />} />
+              </Space>
+            </>
+            ):(
+            <>
+              <Button type="primary" className="rounded-lg" style={{ backgroundColor: '#800020', borderColor: '#800020', marginRight: 4 }} onClick={()=>{ navigate("/createaccount") }}>
+                Get started
+              </Button>
+              <Button type="text" className="text-black" style={{ color: '#800020' }} onClick={()=>{ navigate("/login") }}>
+                Log in
+              </Button>
+            </>
+            )
+          }
           <Button
             type="text"
             icon={<MenuOutlined />}
