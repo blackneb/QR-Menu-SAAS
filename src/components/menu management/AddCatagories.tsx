@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import { Form, Input, Select, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import CategoryTable from '../tables/CategoriesTable';
 
 const { Option } = Select;
 
@@ -29,7 +30,7 @@ const AddCategories: React.FC = () => {
         return e && e.fileList;
       };
   return (
-    <section className="flex flex-col mt-8 md:flex-row justify-center items-center">
+    <section className="flex flex-row mt-8 md:flex-col justify-center items-center">
       <div className="bg-white shadow-md px-8 flex items-center rounded-2xl justify-center w-full md:w-1/2 lg:w-1/3">
         <div className="w-full h-100">
           <Form
@@ -49,6 +50,9 @@ const AddCategories: React.FC = () => {
         </Form.Item>
           </Form>
         </div>
+      </div>
+      <div className='mt-4'>
+        <CategoryTable/>
       </div>
     </section>
   );
