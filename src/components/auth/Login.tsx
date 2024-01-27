@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Card } from 'antd'; // Import UserOutlined and LockOutlined
+import { Form, Input, Button, Card } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { add_user_information } from '../../redux/Actions';
 
-// ... (import statements remain unchanged)
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -13,7 +12,7 @@ const Login: React.FC = () => {
   const dispatch = useDispatch();
 
   const onFinish = async (values: any) => {
-    console.log(values); // Make sure the values are logged correctly
+    console.log(values);
 
     try {
       setLoading(true);
