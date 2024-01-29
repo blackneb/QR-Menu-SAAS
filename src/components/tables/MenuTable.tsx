@@ -3,6 +3,8 @@ import { Table, Button, Modal, Input, Select, Popconfirm } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { ColumnProps } from 'antd/lib/table';
 import EditMenuItem from '../modals/EditMenuItem';
+import { EditOutlined, EyeOutlined, DeleteOutlined } from '@ant-design/icons';
+
 
 interface MenuItem {
   id: number;
@@ -174,19 +176,25 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
     {
       title: 'Preview',
       key: 'preview',
-      render: (text: string) => (
-        <Button type="primary" style={{ background: '#800020', borderColor: '#800020' }} onClick={() => showModal('Preview Text', text)}>
-          Preview
-        </Button>
+      render: () => (
+        <Button
+          type="primary"
+          style={{ color:"#800020" }}
+          onClick={() => showModal('Preview Text', 'Some text')}
+          icon={<EyeOutlined />}
+        />
       ),
     },
     {
       title: 'Edit',
       key: 'edit',
       render: (record: MenuItem) => (
-        <Button type="default" style={{ background: 'green', borderColor: 'green', color: 'white' }} onClick={() => handleEdit(record)}>
-          Edit
-        </Button>
+        <Button
+          type="default"
+          style={{ color: 'green' }}
+          onClick={() => handleEdit(record)}
+          icon={<EditOutlined />}
+        />
       ),
     },
     {
@@ -200,7 +208,10 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
           okButtonProps={{ style: { background: '#800020', color: 'white', borderColor: '#800020' } }}
           cancelText="No"
         >
-          <Button style={{ background: 'red', borderColor: 'red', color: 'white' }}>Delete</Button>
+          <Button
+            style={{ color: 'red' }}
+            icon={<DeleteOutlined />}
+          />
         </Popconfirm>
       ),
     },
@@ -218,7 +229,8 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
         title="Edit Menu Item"
         visible={editModalVisible}
         onCancel={handleEditModalCancel}
-        footer={null}
+        okButtonProps={{ style: { backgroundColor: 'red' } }} 
+        
       >
         <EditMenuItem selectedRecord={selectedRecord} />
       </Modal>
