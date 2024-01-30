@@ -1,11 +1,12 @@
 import React from 'react';
+import Home from './pages';
 
 
 const Landing: React.FC = () => {
 
   return (
-    <div className="app-container">
-     
+    <div>
+        <Home/>
     </div>
   );
 };

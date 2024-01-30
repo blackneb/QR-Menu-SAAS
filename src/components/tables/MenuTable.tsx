@@ -32,8 +32,7 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
         <div>
           <p>{text}</p>
         </div>
-      ),
-      onOk() {},
+      ),      
     });
   };
 
@@ -178,7 +177,7 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
       key: 'preview',
       render: () => (
         <Button
-          type="primary"
+          type="text"
           style={{ color:"#800020" }}
           onClick={() => showModal('Preview Text', 'Some text')}
           icon={<EyeOutlined />}
@@ -190,7 +189,7 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
       key: 'edit',
       render: (record: MenuItem) => (
         <Button
-          type="default"
+          type="text"
           style={{ color: 'green' }}
           onClick={() => handleEdit(record)}
           icon={<EditOutlined />}
@@ -210,6 +209,7 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
         >
           <Button
             style={{ color: 'red' }}
+            type="text"
             icon={<DeleteOutlined />}
           />
         </Popconfirm>
@@ -229,7 +229,7 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
         title="Edit Menu Item"
         visible={editModalVisible}
         onCancel={handleEditModalCancel}
-        okButtonProps={{ style: { backgroundColor: 'red' } }} 
+        okButtonProps={{ style: { backgroundColor: '#800020' } }} 
         
       >
         <EditMenuItem selectedRecord={selectedRecord} />
