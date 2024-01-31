@@ -47,7 +47,7 @@ const Pricing = () => {
                 variants={scrollAnimation}
                 className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20"
                 whileHover={{
-                  scale : 1.1,
+                  scale : 1.01,
                   transition: {
                     duration: .2
                   }
@@ -82,7 +82,7 @@ const Pricing = () => {
                   <p className="text-2xl text-black-600 text-center mb-4 ">
                     Free
                   </p>
-                  <ButtonOutline>Select</ButtonOutline>
+                  <Button size="small" style={{backgroundColor:"#800020", color:"white", borderColor:"#800020"}}>Select</Button>
                 </div>
               </motion.div>
             </ScrollAnimationWrapper>
@@ -91,7 +91,7 @@ const Pricing = () => {
                 variants={scrollAnimation}
                 className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20"
                 whileHover={{
-                  scale : 1.1,
+                  scale : 1.01,
                   transition: {
                     duration: .2
                   }
@@ -129,7 +129,7 @@ const Pricing = () => {
                 <p className="text-2xl text-black-600 text-center mb-4 ">
                   $9 <span className="text-black-500">/ mo</span>
                 </p>
-                <ButtonOutline>Select</ButtonOutline>
+                <Button size="small" style={{backgroundColor:"#800020", color:"white", borderColor:"#800020"}}>Select</Button>
               </div>
               </motion.div>
             </ScrollAnimationWrapper>
@@ -138,7 +138,7 @@ const Pricing = () => {
                 variants={scrollAnimation}
                 className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20"
                 whileHover={{
-                  scale : 1.1,
+                  scale : 1.01,
                   transition: {
                     duration: .2
                   }
@@ -180,7 +180,7 @@ const Pricing = () => {
                   $12 <span className="text-black-500">/ mo</span>
                 </p>
 
-                <ButtonOutline>Select</ButtonOutline>
+                <Button size="small" style={{backgroundColor:"#800020", color:"white", borderColor:"#800020"}}>Select</Button>
               </div>
               </motion.div>
             </ScrollAnimationWrapper>
