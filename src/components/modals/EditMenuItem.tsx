@@ -44,6 +44,13 @@ const EditMenuItem = ({selectedRecord}:any) => {
             </Form.Item>
 
             <Form.Item
+              label="Category"
+              name="category"
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
               label="Price"
               name="price"
             >

@@ -4,6 +4,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { ColumnProps } from 'antd/lib/table';
 import EditMenuItem from '../modals/EditMenuItem';
 import { EditOutlined, EyeOutlined, DeleteOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import PreviewMenuModal from '../modals/PreviewMenuModal';
 
 
 interface MenuItem {
@@ -25,16 +26,17 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
   const [filteredData, setFilteredData] = useState<MenuItem[]>(data);
   const [editModalVisible, setEditModalVisible] = useState<boolean>(false);
   const [selectedRecord, setSelectedRecord] = useState<MenuItem | null>(null);
+  const [previewModalVisible, setPreviewModalVisible] = useState<boolean>(false);
+  const [selectedPreviewRecord, setSelectedPreviewRecord] = useState<MenuItem | null>(null);
 
-  const showModal = (title: string, text: string) => {
-    Modal.info({
-      title,
-      content: (
-        <div>
-          <p>{text}</p>
-        </div>
-      ),      
-    });
+  const showPreviewModal = (record: MenuItem) => {
+    setPreviewModalVisible(true);
+    setSelectedPreviewRecord(record);
+  };
+
+  const hidePreviewModal = () => {
+    setPreviewModalVisible(false);
+    setSelectedPreviewRecord(null);
   };
 
   const handleEdit = (record: MenuItem) => {
@@ -240,11 +242,11 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
     {
       title: 'Preview',
       key: 'preview',
-      render: () => (
+      render: (record: MenuItem) => (
         <Button
           type="text"
-          style={{ color:"#800020" }}
-          onClick={() => showModal('Preview Text', 'Some text')}
+          style={{ color: "#800020" }}
+          onClick={() => showPreviewModal(record)}
           icon={<EyeOutlined />}
         />
       ),
@@ -295,9 +297,17 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
         visible={editModalVisible}
         onCancel={handleEditModalCancel}
         okButtonProps={{ style: { backgroundColor: '#800020' } }} 
-        
       >
         <EditMenuItem selectedRecord={selectedRecord} />
+      </Modal>
+
+      <Modal
+        title="Preview Menu Item"
+        visible={previewModalVisible}
+        onCancel={hidePreviewModal}
+        footer={null}
+      >
+        <PreviewMenuModal selectedPreviewRecord={selectedPreviewRecord} />
       </Modal>
     </div>
   );
