@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Table, Button, Modal, Input, Select, Popconfirm } from 'antd';
+import { Table, Button, Modal, Input, Select, Popconfirm, Tag } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { ColumnProps } from 'antd/lib/table';
 import EditMenuItem from '../modals/EditMenuItem';
-import { EditOutlined, EyeOutlined, DeleteOutlined } from '@ant-design/icons';
+import { EditOutlined, EyeOutlined, DeleteOutlined, CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 
 
 interface MenuItem {
@@ -13,6 +13,7 @@ interface MenuItem {
   restaurantId: number;
   price: number;
   image: string;
+  status: string;
 }
 
 interface MenuTableProps {
@@ -162,13 +163,77 @@ const MenuTable: React.FC<MenuTableProps> = ({ data }) => {
       title: 'Restaurant ID',
       dataIndex: 'restaurantId',
       key: 'restaurantId',
+      render: (restaurantId : number) => (
+        <Tag color="purple">{restaurantId}</Tag>
+      ),
       sorter: (a: MenuItem, b: MenuItem) => a.restaurantId - b.restaurantId,
       ...getColumnSearchProps('restaurantId'),
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status: string) => (
+        <Tag color={status === 'active' ? 'green' : 'red'} className='w-20 flex items-center justify-center'>
+          {status === 'active' ? (
+            <>
+              <CheckCircleOutlined style={{ color: 'green', marginRight: '5px' }} />
+              {status}
+            </>
+          ) : (
+            <>
+              <CloseCircleOutlined style={{ color: 'red', marginRight: '5px' }} />
+              {status}
+            </>
+          )}
+        </Tag>
+      ),
+      sorter: (a: MenuItem, b: MenuItem) => a.status.localeCompare(b.status),
+      filters: [
+        { text: 'Active', value: 'active' },
+        { text: 'Inactive', value: 'inactive' },
+      ],
+      onFilter: (value: string, record: MenuItem) => record.status === value,
+      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }: any) => (
+        <div style={{ padding: 8 }}>
+          <Select
+            style={{ width: '100%' }}
+            value={selectedKeys[0]}
+            onChange={(value) => setSelectedKeys(value ? [value] : [])}
+            onSearch={(value) => setSelectedKeys(value ? [value] : [])}
+            filterOption={(input, option: any) => option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+          >
+            <Select.Option key="active" value="active">
+              Active
+            </Select.Option>
+            <Select.Option key="inactive" value="inactive">
+              Inactive
+            </Select.Option>
+          </Select>
+          <div style={{ marginTop: 8 }}>
+            <Button
+              type="primary"
+              onClick={() => handleSearch(confirm)}
+              icon={<SearchOutlined />}
+              size="small"
+              style={{ width: '100%', marginRight: '4%', backgroundColor: "#800020", borderColor: "#800020" }}
+            >
+              Search
+            </Button>
+            <Button onClick={() => handleReset(clearFilters)} size="small" style={{ width: '100%', marginTop: 8 }}>
+              Reset
+            </Button>
+          </div>
+        </div>
+      ),
     },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
+      render: (price: number) => (
+        <Tag color="blue">{price}</Tag>
+      ),
       sorter: (a: MenuItem, b: MenuItem) => a.price - b.price,
       ...getColumnSearchProps('price'),
     },

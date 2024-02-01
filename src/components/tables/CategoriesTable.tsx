@@ -30,7 +30,7 @@ const columns: ColumnsType<Category> = [
 ];
 
 const CategoryTable: React.FC = () => {
-  return <Table dataSource={data} columns={columns} pagination={{pageSize: 5}} />;
+  return <Table dataSource={data} columns={columns} pagination={{ pageSize: 5 }} scroll={{ x: 'max-content' }} />;
 };
 
 export default CategoryTable;

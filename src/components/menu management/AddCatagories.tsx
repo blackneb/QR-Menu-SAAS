@@ -51,7 +51,7 @@ const AddCategories: React.FC = () => {
           </Form>
         </div>
       </div>
-      <div className='mt-4'>
+      <div className='mt-4 w-full'>
         <CategoryTable/>
       </div>
     </section>
