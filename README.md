@@ -1,2 +1,2 @@
 # QR-Menu-SAAS
-## React + Typescript + Vite + Ant Design
+## React + Typescript + Vite + + TailwincCSS + Ant Design
