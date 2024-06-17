@@ -1,10 +1,8 @@
 
 import React, {useState} from 'react';
-import { Form, Input, Select, Upload, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Form, Input, Button } from 'antd';
 import CategoryTable from '../tables/CategoriesTable';
 
-const { Option } = Select;
 
 const AddCategories: React.FC = () => {
     const [loading, setLoading] = useState(false);

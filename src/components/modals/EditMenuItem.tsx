@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Form, Input, Button, InputNumber } from 'antd';
 
 const EditMenuItem = ({selectedRecord}:any) => {
     const [loading, setLoading] = useState(false);
     const onFinish = async (values: any) => {
         console.log(values)
+        console.log(selectedRecord)
         try {
           setLoading(true);
           // Add your account creation logic here, e.g., make an API request

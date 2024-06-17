@@ -17,6 +17,7 @@ import MenuManagement from '../pages/MenuManagement';
 import Routing from '../routing/Routing';
 import ProfileManagement from '../pages/ProfileManagement';
 import { useSelector } from 'react-redux';
+import InsideRouting from '../routing/InsideRouting'
 
 const { Header, Sider, Content } = Layout;
 

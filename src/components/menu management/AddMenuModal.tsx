@@ -57,7 +57,7 @@ const AddMenuModal: React.FC = () => {
               </Upload>
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 8, span: 16 }} >
-              <Button type="primary" htmlType="submit" style={{background: '#800020', borderColor: '#800020' }}>
+              <Button type="primary" loading={loading} htmlType="submit" style={{background: '#800020', borderColor: '#800020' }}>
                 Submit
               </Button>
             </Form.Item>

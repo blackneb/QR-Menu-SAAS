@@ -1,8 +1,7 @@
-import React from 'react';
 import { Card, Descriptions, Image, Tag } from 'antd';
 
 const PreviewMenuModal = ({ selectedPreviewRecord }: any) => {
-  const { menuName, category, price, image, status } = selectedPreviewRecord;
+  const { menuName, category, price, status } = selectedPreviewRecord;
 
   const getStatusTagColor = () => {
     return status === 'active' ? 'green' : 'red';
